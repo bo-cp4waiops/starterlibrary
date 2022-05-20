@@ -163,7 +163,8 @@ resource "vsphere_virtual_machine" "vm_1" {
   num_cpus         = var.vm_1_number_of_vcpu
   memory           = var.vm_1_memory
   resource_pool_id = data.vsphere_resource_pool.vm_1_resource_pool.id
-  datastore_id     = data.vsphere_datastore.vm_1_datastore.id
+  # datastore_id     = data.vsphere_datastore.vm_1_datastore.id
+  datastore_id     = cdanfs
   guest_id         = data.vsphere_virtual_machine.vm_1_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.vm_1_template.scsi_type
 
