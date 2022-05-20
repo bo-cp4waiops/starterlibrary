@@ -70,6 +70,11 @@ variable "vm_1_datacenter" {
   description = "Target vSphere datacenter for virtual machine creation"
 }
 
+variable "vm_1_datastore" {
+  description = "Target vSphere Datastore for virtual machine creation"
+  default     = "cdanfs"
+}
+
 variable "vm_1_domain" {
   description = "Domain Name of virtual machine"
 }
@@ -164,7 +169,7 @@ resource "vsphere_virtual_machine" "vm_1" {
   memory           = var.vm_1_memory
   resource_pool_id = data.vsphere_resource_pool.vm_1_resource_pool.id
   # datastore_id     = data.vsphere_datastore.vm_1_datastore.id
-  datastore_id     = cdanfs
+  datastore_id     = var.vm_1_datastore
   guest_id         = data.vsphere_virtual_machine.vm_1_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.vm_1_template.scsi_type
 
